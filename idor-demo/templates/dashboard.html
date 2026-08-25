@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard - Invoice Portal</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card wide">
+    <div class="top-row">
+        <h1>Welcome, {{ username }}</h1>
+        <a href="{{ url_for('logout') }}" class="logout">Log out</a>
+    </div>
+
+    <p class="mode-banner {{ 'secure' if fix_mode else 'vulnerable' }}">
+        Mode: {{ "FIXED (ownership check enabled)" if fix_mode else "VULNERABLE (IDOR enabled)" }}
+    </p>
+
+    <h2>Your Invoices</h2>
+    <table>
+        <tr><th>ID</th><th>Title</th><th>Amount</th><th></th></tr>
+        {% for inv in invoices %}
+        <tr>
+            <td>{{ inv["id"] }}</td>
+            <td>{{ inv["title"] }}</td>
+            <td>{{ inv["amount"] }}</td>
+            <td><a href="{{ url_for('view_invoice', invoice_id=inv['id']) }}">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p class="tip">
+        Try changing the invoice ID in the address bar (e.g. go to
+        <code>/invoice/101</code>, <code>/invoice/102</code>, <code>/invoice/103</code>)
+        while logged in as a different user, to demonstrate the IDOR.
+    </p>
+</div>
+</body>
+</html>

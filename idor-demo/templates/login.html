@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice Portal - Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card">
+    <h1>Invoice Portal</h1>
+    <p class="subtitle">IDOR Demo Application</p>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
+        <label>Password</label>
+        <input type="password" name="password" required>
+        <button type="submit">Log In</button>
+    </form>
+
+    <div class="hint">
+        <strong>Demo accounts</strong>
+        <ul>
+            <li>alice / alice123</li>
+            <li>bob / bob123</li>
+            <li>carol / carol123</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

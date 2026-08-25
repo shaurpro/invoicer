@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice #{{ invoice["id"] }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="card wide">
+    <a href="{{ url_for('dashboard') }}" class="back">&larr; Back to dashboard</a>
+    <h1>Invoice #{{ invoice["id"] }}</h1>
+
+    <p class="mode-banner {{ 'secure' if fix_mode else 'vulnerable' }}">
+        Mode: {{ "FIXED (ownership check enabled)" if fix_mode else "VULNERABLE (IDOR enabled)" }}
+    </p>
+
+    <table class="details">
+        <tr><th>Title</th><td>{{ invoice["title"] }}</td></tr>
+        <tr><th>Amount</th><td>{{ invoice["amount"] }}</td></tr>
+        <tr><th>Owner (user_id)</th><td>{{ invoice["user_id"] }}</td></tr>
+        <tr><th>Private details</th><td>{{ invoice["details"] }}</td></tr>
+    </table>
+</div>
+</body>
+</html>
