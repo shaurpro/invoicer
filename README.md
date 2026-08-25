@@ -1,7 +1,5 @@
 # IDOR (Insecure Direct Object Reference) Demo — Invoice Portal
 
-**Video walkthrough:** _[add your demo video link here before submitting]_
-
 A tiny Flask + SQLite web app built as a security-lab assignment to demonstrate
 **IDOR (Insecure Direct Object Reference / OWASP: Broken Access Control)**.
 
